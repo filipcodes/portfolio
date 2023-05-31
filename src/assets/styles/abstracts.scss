@@ -1,0 +1,68 @@
+//!-------------------------------
+//!----------VARIABLES------------
+//!-------------------------------
+
+//* -------COLORS--------
+//? -------pure colors-------
+$orange: #ff4c29;
+
+$navy: #082032;
+
+$grey: #334756;
+
+$white: #e5e7eb;
+
+//? ---------colors in components--------
+$color-body: $navy;
+
+//* -------FONTS--------
+
+//* -------BORDERS--------
+$border-radius-small: 0.6rem;
+$border-radius-medium: 1rem;
+$border-radius-large: 2rem;
+
+//* -------ANIMATIONS--------
+$animation--time-short: 0.2s;
+
+//!----------------------------
+//!----------MIXINS------------
+//!----------------------------
+
+@mixin container($width: 140rem) {
+  max-width: $width;
+
+  margin: 0 auto; //Centers the contesnt
+  padding: 0 2.4rem; // Makes screen edges not touch on smaller displays
+}
+
+@mixin grid($cols, $gap: 0) {
+  display: grid;
+  grid-template-columns: repeat($cols, 1fr);
+  gap: $gap;
+  @content;
+}
+
+@mixin pos-abs($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin pseudo($loc: before, $content: "", $pos: absolute) {
+  position: relative;
+  &::#{$loc} {
+    content: $content;
+    position: $pos;
+    @content;
+  }
+}
+
+@mixin center-content($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+}
