@@ -8,12 +8,17 @@ $orange: #ff4c29;
 
 $navy: #082032;
 
-$grey: #334756;
+$black: #09090b;
 
-$white: #e5e7eb;
+$grey: #d4d4d8;
+
+$white: #e4e4e7;
 
 //? ---------colors in components--------
-$color-body: $navy;
+$color-body: $black;
+$color-text: $grey;
+$color-project-background: $grey;
+$color-get-in-touch-background: $black;
 
 //* -------FONTS--------
 
@@ -24,6 +29,7 @@ $border-radius-large: 2rem;
 
 //* -------ANIMATIONS--------
 $animation--time-short: 0.2s;
+$animation--time-medium: 0.3s;
 
 //!----------------------------
 //!----------MIXINS------------
@@ -33,7 +39,7 @@ $animation--time-short: 0.2s;
   max-width: $width;
 
   margin: 0 auto; //Centers the contesnt
-  padding: 0 2.4rem; // Makes screen edges not touch on smaller displays
+  padding: 0 3.2rem; // Makes screen edges not touch on smaller displays
 }
 
 @mixin grid($cols, $gap: 0) {
@@ -66,3 +72,12 @@ $animation--time-short: 0.2s;
   align-items: center;
   justify-content: center;
 }
+
+// STYLE STRUCTURE
+/*
+Fonts and text
+Background
+Display and positioning
+pseudo stuff
+
+*/

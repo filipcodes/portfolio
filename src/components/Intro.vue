@@ -2,10 +2,9 @@
   <section>
     <div class="container">
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
-        ducimus cupiditate perspiciatis optio officiis dolor modi, nobis
-        deleniti quod at natus esse doloribus nesciunt odit quam architecto ut,
-        voluptatibus earum!
+        My name is Filip, and I am a Front-end developer currently living in
+        Slovakia. I am passionate about creating smooth, engaging and appealing
+        digital experiences.
       </p>
     </div>
   </section>
