@@ -13,9 +13,16 @@ export default {
 </script>
 <style lang="scss" scoped>
 @use "../assets/styles/abstracts" as *;
+@use "../assets/styles/queries" as *;
 
 footer {
   height: 35rem;
   @include center-content;
+  text-align: center;
+  @include media("<=1050px") {
+    p {
+      max-width: 80%;
+    }
+  }
 }
 </style>

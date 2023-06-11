@@ -31,5 +31,13 @@ export default {
   @include media("<=1300px") {
     grid-template-columns: 1fr 1fr;
   }
+  @include media("<=768px") {
+    grid-template-columns: 1fr;
+  }
+  @include media("<=560px") {
+    grid-template-columns: 1fr;
+    padding: 0 1.2rem;
+    gap: 1.2rem;
+  }
 }
 </style>

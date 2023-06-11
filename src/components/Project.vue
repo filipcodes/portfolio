@@ -4,7 +4,7 @@
       <img
         class="project__image"
         src="https://img.freepik.com/free-photo/homepage-seen-computer-screen_23-2149416723.jpg?w=2000"
-        alt=""
+        alt="image of the project"
       />
     </div>
     <div class="project__info">

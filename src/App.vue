@@ -5,15 +5,24 @@ import IntroSection from "./components/Intro.vue";
 import Grid from "./components/Grid.vue";
 import Footer from "./components/Footer.vue";
 import Contact from "./components/Contact.vue";
-
 import MouseFollower from "mouse-follower";
 import gsap from "gsap";
 
-MouseFollower.registerGSAP(gsap);
+function is_touch_enabled() {
+  return (
+    "ontouchstart" in window ||
+    navigator.maxTouchPoints > 0 ||
+    navigator.msMaxTouchPoints > 0
+  );
+}
 
-const cursor = new MouseFollower({
-  speed: 0.4,
-});
+if (!is_touch_enabled()) {
+  MouseFollower.registerGSAP(gsap);
+
+  const cursor = new MouseFollower({
+    speed: 0.4,
+  });
+}
 </script>
 
 <template>
