@@ -1,9 +1,11 @@
 <template>
   <footer>
-    <p>
-      If interested in hiring me, or just want to chat, don't be afraid to get
-      in touch.
-    </p>
+    <div class="getintouch">
+      <p>
+        If interested in hiring me, or just want to chat, don't be afraid to get
+        in touch.
+      </p>
+    </div>
   </footer>
 </template>
 <script>
@@ -16,9 +18,11 @@ export default {
 @use "../assets/styles/queries" as *;
 
 footer {
-  height: 35rem;
-  @include center-content;
-  text-align: center;
+  .getintouch {
+    height: 35rem;
+    @include center-content;
+    text-align: center;
+  }
   @include media("<=1050px") {
     p {
       max-width: 80%;

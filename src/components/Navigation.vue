@@ -1,11 +1,13 @@
 <template>
   <header>
-    <img
-      src="../assets/styles/media/FS Logo.png"
-      alt="Logo depicting letters F and S in a geometric pattern"
-    />
+    <a href="#">
+      <img
+        src="../assets/styles/media/Logo.png"
+        alt="Logo depicting letters F and S in a geometric pattern"
+      />
+    </a>
 
-    <a href="#"> Get In Touch</a>
+    <button @click="$emit('openContact')">Get In Touch</button>
   </header>
 </template>
 <script>
@@ -15,6 +17,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 @use "../assets/styles/queries" as *;
+@use "../assets/styles/abstracts" as *;
 
 header {
   display: flex;
@@ -28,12 +31,12 @@ header {
     padding: 3.6rem 2rem;
   }
 
-  a {
-    &:link,
-    &:visited {
-      outline: none;
-      text-decoration: underline;
-    }
+  button {
+    color: $white;
+    outline: none;
+    text-decoration: underline;
+    background-color: transparent;
+
     &:hover {
       text-decoration: none;
     }

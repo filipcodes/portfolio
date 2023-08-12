@@ -5,8 +5,13 @@ import IntroSection from "./components/Intro.vue";
 import Grid from "./components/Grid.vue";
 import Footer from "./components/Footer.vue";
 import Contact from "./components/Contact.vue";
+import GetInTouch from "./components/GetInTouch.vue";
+
+// Mouse follower
 import MouseFollower from "mouse-follower";
 import gsap from "gsap";
+
+// email sender
 
 function is_touch_enabled() {
   return (
@@ -16,47 +21,52 @@ function is_touch_enabled() {
   );
 }
 
-if (!is_touch_enabled()) {
-  MouseFollower.registerGSAP(gsap);
+MouseFollower.registerGSAP(gsap);
 
-  const cursor = new MouseFollower({
-    speed: 0.4,
-  });
-}
+const cursor = new MouseFollower({
+  speed: 0.4,
+});
 </script>
 
 <template>
-  <Navigation></Navigation>
+  <Transition>
+    <GetInTouch @closeOverlay="overlay--" v-if="overlay"></GetInTouch>
+  </Transition>
+  <Navigation @openContact="overlay++"></Navigation>
   <main>
     <IntroSection></IntroSection>
     <!-- <MouseFollower></MouseFollower> -->
     <Grid></Grid>
-    <Contact></Contact>
+    <Contact @openContact="overlay++"></Contact>
   </main>
-  <div class="logo-wrapper1">
-    <div class="logo-wrapper2">
-      <div class="logo">
-        <div class="cutter1">
-          <div class="cutter1-1"></div>
-          <div class="cutter1-2">
-            <div class="cutter1-2-1">
-              <div class="cutter1-2-1-1"></div>
-              <div class="cutter1-2-1-2"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <Footer></Footer>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      overlay: 0,
+    };
+  },
+};
+</script>
 
 <style lang="scss">
 @import "assets/styles/reset";
 @import "assets/styles/abstracts";
 @import "mouse-follower/src/scss/index.scss";
 // General Styles
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 3s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 
 body {
   font-family: "Inter", sans-serif;
@@ -87,6 +97,13 @@ button {
     left: -5rem;
     height: 10rem;
     width: 10rem;
+  }
+}
+
+// Hide the cursor if hover is not supported
+@media not (hover: hover) {
+  .mf-cursor {
+    color: transparent;
   }
 }
 </style>
