@@ -20,9 +20,9 @@
   </section>
 </template>
 <script>
-import Project from "./Project.vue";
-import sanity from "../client";
-import { dropDown } from "../store/dropDownState";
+import Project from "@/components/Project.vue";
+import sanity from "@/client";
+import { dropDown } from "@/store/dropDownState";
 
 export default {
   name: "Grid",
@@ -57,8 +57,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@use "../assets/styles/abstracts" as *;
-@use "../assets/styles/queries" as *;
+@use "@/assets/styles/abstracts" as *;
+@use "@/assets/styles/queries" as *;
 
 .container {
   @include container(100%);

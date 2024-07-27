@@ -1,6 +1,6 @@
 <script setup>
 import emailjs from "@emailjs/browser";
-import { dropDown } from "../store/dropDownState.js";
+import { dropDown } from "@/store/dropDownState.js";
 </script>
 
 <template>
@@ -120,8 +120,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use "../assets/styles/abstracts" as *;
-@use "../assets/styles/queries" as *;
+@use "@/assets/styles/abstracts" as *;
+@use "@/assets/styles/queries" as *;
 
 .overlay {
   position: fixed;

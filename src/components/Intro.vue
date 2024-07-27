@@ -7,6 +7,7 @@
         experiences.
       </p>
     </div>
+    <div class=""></div>
   </section>
 </template>
 <script>
@@ -16,8 +17,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use "../assets/styles/abstracts" as *;
-@use "../assets/styles/queries" as *;
+@use "@/assets/styles/abstracts" as *;
+@use "@/assets/styles/queries" as *;
 
 section {
   height: 50rem;

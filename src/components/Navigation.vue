@@ -1,7 +1,7 @@
 <template>
   <header>
     <a href="#">
-      <img src="../assets/media/Logo.png" alt="Filip Sipos Logo" />
+      <img src="@/assets/media/Logo.png" alt="Filip Sipos Logo" />
     </a>
     <div class="ctas">
       <button @click="$emit('openContact')">Get In Touch</button>
@@ -18,8 +18,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@use "../assets/styles/queries" as *;
-@use "../assets/styles/abstracts" as *;
+@use "@/assets/styles/queries" as *;
+@use "@/assets/styles/abstracts" as *;
 .ctas {
   display: flex;
   gap: 2.4rem;

@@ -19,7 +19,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@use "../assets/styles/abstracts" as *;
+@use "@/assets/styles/abstracts" as *;
 
 .contact {
   background-color: $color-get-in-touch-background;

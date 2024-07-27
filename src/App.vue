@@ -1,12 +1,12 @@
 <script setup>
 // Imports
-import Navigation from "./components/Navigation.vue";
-import IntroSection from "./components/Intro.vue";
-import Grid from "./components/Grid.vue";
-import Footer from "./components/Footer.vue";
-import ContactButton from "./components/ContactButton.vue";
-import GetInTouch from "./components/GetInTouch.vue";
-import AppDropdown from "./components/AppDropdown.vue";
+import Navigation from "@/components/Navigation.vue";
+import IntroSection from "@/components/Intro.vue";
+import Grid from "@/components/Grid.vue";
+import Footer from "@/components/Footer.vue";
+import ContactButton from "@/components/ContactButton.vue";
+import GetInTouch from "@/components/GetInTouch.vue";
+import AppDropdown from "@/components/AppDropdown.vue";
 
 // Mouse follower
 import MouseFollower from "mouse-follower";
