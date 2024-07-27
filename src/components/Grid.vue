@@ -2,6 +2,12 @@
   <section>
     <div class="container">
       <Project
+        v-for="x in 3"
+        :key="index"
+        v-if="!projects[1]"
+        :loader="true"
+      ></Project>
+      <Project
         v-for="project in projects"
         :project-name="project.name"
         :project-technologies="project.technologies"
@@ -39,9 +45,10 @@ export default {
 
       sanity.fetch(query).then(
         (projects) => {
-          this.loading = false;
-          this.projects = projects;
-          console.log(this.projects);
+          setTimeout(() => {
+            this.loading = false;
+            this.projects = projects;
+          }, 4000);
         },
         (error) => {
           this.error = error;

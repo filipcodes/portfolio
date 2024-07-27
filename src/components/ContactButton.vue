@@ -31,7 +31,7 @@ export default {
   transform: translateX(-50%);
   padding: 1.2rem 2.4rem;
   border-radius: $border-radius-small;
-  z-index: 100;
+  z-index: 10;
 
   transition: all $animation--time-medium;
 

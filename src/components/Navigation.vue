@@ -1,13 +1,12 @@
 <template>
   <header>
     <a href="#">
-      <img
-        src="../assets/styles/media/Logo.png"
-        alt="Logo depicting letters F and S in a geometric pattern"
-      />
+      <img src="../assets/media/Logo.png" alt="Filip Sipos Logo" />
     </a>
-
-    <button @click="$emit('openContact')">Get In Touch</button>
+    <div class="ctas">
+      <button @click="$emit('openContact')">Get In Touch</button>
+      <a href="../assets/media/filip_sipos_cv.pdf">Get My CV</a>
+    </div>
   </header>
 </template>
 <script>
@@ -18,7 +17,21 @@ export default {
 <style lang="scss" scoped>
 @use "../assets/styles/queries" as *;
 @use "../assets/styles/abstracts" as *;
+.ctas {
+  display: flex;
+  gap: 2.4rem;
 
+  a:link {
+    color: $white;
+    outline: none;
+    text-decoration: underline;
+    background-color: transparent;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
 header {
   display: flex;
   align-items: center;
