@@ -22,10 +22,8 @@
 <script>
 import Project from "./Project.vue";
 import sanity from "../client";
+import { dropDown } from "../store/dropDownState";
 
-const query = `
-*[_type == 'project']{_id, name, "imageUrl": image.asset->url, github, link, technologies}
-`;
 export default {
   name: "Grid",
   data() {
@@ -39,21 +37,20 @@ export default {
   },
 
   methods: {
-    fetchData() {
-      this.error = this.post = null;
+    async fetchData() {
       this.loading = true;
-
-      sanity.fetch(query).then(
-        (projects) => {
-          setTimeout(() => {
-            this.loading = false;
-            this.projects = projects;
-          }, 3000);
-        },
-        (error) => {
-          this.error = error;
-        }
-      );
+      const query = `
+*[_type == 'project']{_id, name, "imageUrl": image.asset->url, github, link, technologies}
+`;
+      try {
+        const projects = await sanity.fetch(query);
+        setTimeout(() => {
+          this.loading = false;
+          this.projects = projects;
+        }, 3000);
+      } catch (error) {
+        dropDown.open("Error fetching data from Sanity.io");
+      }
     },
   },
   components: { Project },

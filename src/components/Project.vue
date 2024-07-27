@@ -97,7 +97,8 @@ export default {
 
 .slice {
   display: block;
-  width: 25px;
+  width: 40px;
+  opacity: 70%;
   height: 180%;
   position: absolute;
   top: 20%;
