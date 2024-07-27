@@ -1,27 +1,15 @@
 <script setup>
 import emailjs from "@emailjs/browser";
+import { dropDown } from "../store/dropDownState.js";
 </script>
 
 <template>
   <div class="overlay" @click="emitClose">
-    <div :class="['dropdown', showDropdown ? 'show-dropdown' : '']">
-      <p>
-        {{
-          showDropdown === "success"
-            ? "Your message was sent successfully"
-            : "An error occured"
-        }}
-      </p>
-      <button @click="$emit('closeOverlay')" class="close__dropdown">
-        close
-      </button>
-      <span class="timer"></span>
-    </div>
     <div class="cont">
       <h2>Reach out</h2>
       <form ref="form" class="getintouchform form" @submit.prevent="sendMail">
         <!-- ! NAME -->
-        <div class="namecont smallcont">
+        <div class="namecont">
           <label for="name">Name</label>
           <input
             required
@@ -35,7 +23,7 @@ import emailjs from "@emailjs/browser";
         </div>
 
         <!-- ! EMAIL -->
-        <div class="emailcont smallcont">
+        <div class="emailcont">
           <label for="email">Email</label>
           <input
             required
@@ -49,7 +37,7 @@ import emailjs from "@emailjs/browser";
         </div>
 
         <!-- ! MESSAGE -->
-        <div class="messagecont smallcont">
+        <div class="messagecont">
           <label for="message">Message</label>
           <textarea
             required
@@ -57,20 +45,18 @@ import emailjs from "@emailjs/browser";
             name="message"
             id="message"
             cols="30"
-            rows="10"
+            rows="8"
             v-model="message"
             minlength="5"
+            class="message-input"
           ></textarea>
         </div>
 
         <!-- ! SUBMIT BUTTON -->
-        <button type="submit" class="send" @click="messageSent">
-          {{ btnLoading ? "Sending the email..." : "Submit" }}
+        <button type="submit" class="send">
+          {{ isBtnLoading ? "Sending the email..." : "Submit" }}
         </button>
       </form>
-      <p class="callme">
-        Or call me instead: <a href="tel:+421950748927">+421950748927</a>
-      </p>
     </div>
   </div>
 </template>
@@ -86,7 +72,7 @@ export default {
       message: "",
 
       showDropdown: false,
-      btnLoading: false,
+      isBtnLoading: false,
     };
   },
   methods: {
@@ -94,41 +80,41 @@ export default {
       e.target.classList[0] === "overlay" ? this.$emit("closeOverlay") : "";
     },
 
-    sendMail() {
-      // console.log("form element:", this.$refs.form);
+    deleteInputs() {
+      this.name = "";
+      this.email = "";
+      this.message = "";
+    },
 
-      // put the button into loading mode
-      this.btnLoading = true;
+    async sendMail() {
+      this.isBtnLoading = true;
 
       // send the server request to send email
-      emailjs
-        .sendForm(
+      try {
+        await emailjs.sendForm(
           "service_5c5rd2h",
           "template_ucc2bip",
           this.$refs.form,
-          "YohwYMhZzD3uJBxcE"
-        )
-        .then(
-          (result) => {
-            // delete the input text
-            this.name = "";
-            this.email = "";
-            this.message = "";
-
-            // some kind of success message
-            this.showDropdown = "success";
-            // dropdown from above
-
-            // emit closing the popup
-            setTimeout(() => {
-              this.$emit("closeOverlay");
-            }, 4100);
-          },
-          (error) => {
-            console.log("Failed", error.text);
-          }
+          "0bmkwpZ_HEx1IQsAMsZ9W"
         );
+
+        this.deleteInputs();
+
+        // some kind of success message
+        dropDown.open("Message sent successfully!");
+
+        // emit closing the popup
+        setTimeout(() => {
+          this.$emit("closeOverlay");
+        }, 4100);
+      } catch (error) {
+        this.isBtnLoading = false;
+        dropDown.open("An error has occured while trying to send the message!");
+      }
     },
+  },
+  computed: {
+    buttonText() {},
   },
 };
 </script>
@@ -143,66 +129,12 @@ export default {
   left: 0;
   height: 100vh;
   width: 100%;
+  z-index: 2;
   backdrop-filter: blur(8px);
-  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-}
-
-.dropdown {
-  position: fixed;
-  top: 1.2rem;
-  left: 50%;
-  width: max-content;
-  background-color: lighten($black, 5%);
-  padding: 0.6rem 0.6rem 0.6rem 1.8rem;
-  transform: translate(-50%, calc(-100% - 2.4rem));
-  color: $white;
-  display: flex;
-  align-items: center;
-  gap: 4rem;
-  border-radius: $border-radius-small;
-  overflow: hidden;
-  transition: transform 1s ease;
-
-  .close__dropdown {
-    display: block;
-    text-transform: uppercase;
-    padding: 1rem 0.8rem;
-    margin: 0.2rem 0;
-    background-color: transparent;
-    color: darken($grey, 20%);
-    border-radius: $border-radius-small;
-    letter-spacing: 1px;
-    font-weight: 500;
-
-    &:hover {
-      background-color: darken($grey, $amount: 72%);
-    }
-  }
-
-  .timer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: $orange;
-    height: 3px;
-    width: 100%;
-    transition: all 4s linear;
-    transform: translateX(-100%);
-  }
-}
-
-.show-dropdown {
-  // move it into view
-  transform: translate(-50%, 0);
-  // animate the timer
-
-  .timer {
-    transform: translateX(0);
-  }
 }
 
 .cont {
@@ -235,7 +167,7 @@ form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 3rem;
-
+  row-gap: 1.4rem;
   @include media("<=570px") {
     grid-template-columns: 1fr;
   }
@@ -251,7 +183,8 @@ form {
     color: white !important;
 
     &:focus {
-      outline: 1px solid $orange;
+      outline: 2px solid $orange;
+      outline-offset: 1px;
     }
   }
 }
@@ -289,20 +222,28 @@ textarea {
   border: none;
   color: $black !important;
   font-weight: 500;
-
+  margin-top: 1.2rem;
+  border: 2px solid $orange;
+  transition: all 0.3s ease;
   @include media("<=570px") {
     grid-column: 1;
   }
 
+  &:hover {
+    background-color: transparent;
+    color: $orange !important;
+  }
+
   &:active {
     background-color: #e64425;
+    color: $black !important;
     outline: none;
   }
 }
 
 .callme {
   color: $white;
-  z-index: 100;
+  z-index: 50;
   position: absolute;
   bottom: -4.8rem;
   left: 50%;
@@ -317,5 +258,9 @@ textarea {
   a:hover {
     text-decoration: none;
   }
+}
+
+.message-input {
+  padding: 1.8rem;
 }
 </style>

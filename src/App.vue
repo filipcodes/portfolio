@@ -4,8 +4,9 @@ import Navigation from "./components/Navigation.vue";
 import IntroSection from "./components/Intro.vue";
 import Grid from "./components/Grid.vue";
 import Footer from "./components/Footer.vue";
-import Contact from "./components/Contact.vue";
+import ContactButton from "./components/ContactButton.vue";
 import GetInTouch from "./components/GetInTouch.vue";
+import AppDropdown from "./components/AppDropdown.vue";
 
 // Mouse follower
 import MouseFollower from "mouse-follower";
@@ -29,18 +30,30 @@ const cursor = new MouseFollower({
 </script>
 
 <template>
-  <Transition>
-    <GetInTouch @closeOverlay="overlay--" v-if="overlay"></GetInTouch>
-  </Transition>
-  <Navigation @openContact="overlay++"></Navigation>
-  <main>
-    <IntroSection></IntroSection>
-    <!-- <MouseFollower></MouseFollower> -->
-    <Grid></Grid>
-    <Contact @openContact="overlay++"></Contact>
-  </main>
+  <div class="containerApp">
+    <Navigation @openContact="overlay++"></Navigation>
+    <main>
+      <div class="">
+        <div>
+          <Transition class="z-index" name="drop">
+            <AppDropdown></AppDropdown>
+          </Transition>
+        </div>
+        <div class="">
+          <Transition name="fade">
+            <GetInTouch @closeOverlay="overlay--" v-if="overlay"></GetInTouch>
+          </Transition>
+        </div>
+      </div>
 
-  <Footer></Footer>
+      <IntroSection></IntroSection>
+      <!-- <MouseFollower></MouseFollower> -->
+      <Grid></Grid>
+      <!-- <ContactButton @openContact="overlay++"></ContactButton> -->
+    </main>
+
+    <Footer></Footer>
+  </div>
 </template>
 <script>
 export default {
@@ -48,6 +61,15 @@ export default {
     return {
       overlay: 0,
     };
+  },
+  components: {
+    Navigation,
+    IntroSection,
+    Grid,
+    Footer,
+    ContactButton,
+    GetInTouch,
+    AppDropdown,
   },
 };
 </script>
@@ -58,14 +80,28 @@ export default {
 @import "mouse-follower/src/scss/index.scss";
 // General Styles
 
-.v-enter-active,
-.v-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 3s ease;
 }
 
-.v-enter-from,
-.v-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
+}
+
+.drop-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.drop-leave-active {
+  transition: all 0.65s ease;
+}
+
+.drop-enter-from,
+.drop-leave-to {
+  z-index: 1000;
+  transform: translateY(-80px);
 }
 
 body {
@@ -82,6 +118,12 @@ body {
 
 button {
   border: none;
+}
+
+.containerApp {
+  position: relative;
+  width: 100%;
+  min-height: 13rem;
 }
 
 // Reusable classes

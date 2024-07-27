@@ -1,12 +1,15 @@
 <template>
   <figure class="project">
+    <div v-if="loader" class="slice"></div>
     <div class="project__image__wrapper">
       <img
+        v-if="!loader"
         class="project__image"
-        :src="projectImage + '?h=350'"
+        :src="loader ? '' : projectImage + '?h=350'"
         alt="image of the project"
       />
-      <div class="project__links">
+
+      <div class="project__links" v-if="!loader">
         <a
           v-if="projectGit"
           class="project__link"
@@ -65,6 +68,7 @@
 export default {
   name: "Project",
   props: {
+    loader: Boolean,
     projectImage: String,
     projectName: String,
     projectGit: String,
@@ -75,6 +79,37 @@ export default {
 </script>
 <style lang="scss" scoped>
 @use "../assets/styles/abstracts" as *;
+
+@keyframes reflect {
+  0% {
+    left: -60rem;
+    // opacity: 0;
+  }
+
+  45% {
+    left: 110%;
+    // opacity: 0;
+  }
+  100% {
+    left: 110%;
+  }
+}
+
+.slice {
+  display: block;
+  width: 25px;
+  height: 180%;
+  position: absolute;
+  top: 20%;
+
+  left: -32rem;
+  background-color: #9d9c9c;
+  // opacity: 0;
+  transform: rotate(45deg) translate(0, -50%);
+  animation: reflect 2.5s ease-in-out infinite;
+  filter: blur(10px);
+}
+
 .project {
   // background-color: $color-project-background;
   background: rgba(255, 255, 255, 0.15);
@@ -90,6 +125,7 @@ export default {
   padding: 2rem;
   border-radius: $border-radius-small;
   aspect-ratio: 1.1;
+  overflow: hidden;
 
   &:hover {
     .project__image {
