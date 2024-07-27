@@ -19,10 +19,11 @@ export default {
 
 footer {
   .getintouch {
-    height: 35rem;
+    height: 32rem;
     @include center-content;
     text-align: center;
   }
+
   @include media("<=1050px") {
     p {
       max-width: 80%;
