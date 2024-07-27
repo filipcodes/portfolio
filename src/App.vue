@@ -49,7 +49,7 @@ const cursor = new MouseFollower({
       <IntroSection></IntroSection>
       <!-- <MouseFollower></MouseFollower> -->
       <Grid></Grid>
-      <!-- <ContactButton @openContact="overlay++"></ContactButton> -->
+      <ContactButton @openContact="overlay++"></ContactButton>
     </main>
 
     <Footer></Footer>
