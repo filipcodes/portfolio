@@ -5,7 +5,10 @@
     </a>
     <div class="ctas">
       <button @click="$emit('openContact')">Get In Touch</button>
-      <a href="../assets/media/filip_sipos_cv.pdf">Get My CV</a>
+      <a
+        href="https://drive.google.com/file/d/1Y-ocbYYtVhBng5nn9PeNKBdm1SJwXffo/view?usp=drive_link"
+        >Get My CV</a
+      >
     </div>
   </header>
 </template>

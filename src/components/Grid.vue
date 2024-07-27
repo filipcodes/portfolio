@@ -48,7 +48,7 @@ export default {
           setTimeout(() => {
             this.loading = false;
             this.projects = projects;
-          }, 4000);
+          }, 3000);
         },
         (error) => {
           this.error = error;
