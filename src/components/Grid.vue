@@ -21,7 +21,7 @@
 </template>
 <script>
 import Project from "@/components/Project.vue";
-import sanity from "@/client";
+import sanity from "@/api/client.js";
 import { dropDown } from "@/store/dropDownState";
 
 export default {

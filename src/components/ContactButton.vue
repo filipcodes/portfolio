@@ -1,6 +1,6 @@
 <template>
   <button class="contact hidden" @click="$emit('openContact')" href="#">
-    Get In Touch
+    Get in touch
   </button>
 </template>
 <script>
@@ -23,7 +23,7 @@ export default {
 
 .contact {
   background-color: $color-get-in-touch-background;
-  border: 1px solid $white;
+  border: 1.5px solid $white;
   color: white;
   position: fixed;
   bottom: 6.4rem;
@@ -32,6 +32,8 @@ export default {
   padding: 1.2rem 2.4rem;
   border-radius: $border-radius-small;
   z-index: 10;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 
   transition: all $animation--time-medium;
 
