@@ -14,8 +14,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@use "../assets/styles/abstracts" as *;
-@use "../assets/styles/queries" as *;
+@use "@/assets/styles/abstracts" as *;
+@use "@/assets/styles/queries" as *;
 
 footer {
   .getintouch {

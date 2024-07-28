@@ -1,5 +1,5 @@
 <script setup>
-import { dropDown } from "../store/dropDownState.js";
+import { dropDown } from "@/store/dropDownState.js";
 </script>
 <template>
   <div class="z-index" v-if="dropDown.isOpen">
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use "../assets/styles/abstracts" as *;
+@use "@/assets/styles/abstracts" as *;
 .z-index {
   z-index: 1000;
   position: fixed;

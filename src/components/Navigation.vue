@@ -1,14 +1,10 @@
 <template>
   <header>
     <a href="#">
-      <img src="../assets/media/Logo.png" alt="Filip Sipos Logo" />
+      <img src="@/assets/media/Logo.png" alt="Filip Sipos Logo" />
     </a>
     <div class="ctas">
-      <button @click="$emit('openContact')">Get In Touch</button>
-      <a
-        href="https://drive.google.com/file/d/1Y-ocbYYtVhBng5nn9PeNKBdm1SJwXffo/view?usp=drive_link"
-        >Get My CV</a
-      >
+      <button @click="$emit('openContact')">Get in touch</button>
     </div>
   </header>
 </template>
@@ -18,20 +14,23 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@use "../assets/styles/queries" as *;
-@use "../assets/styles/abstracts" as *;
+@use "@/assets/styles/queries" as *;
+@use "@/assets/styles/abstracts" as *;
 .ctas {
   display: flex;
   gap: 2.4rem;
 
-  a:link {
-    color: $white;
-    outline: none;
-    text-decoration: underline;
-    background-color: transparent;
+  a {
+    &:visited,
+    &:link {
+      color: $white;
+      outline: none;
+      text-decoration: underline;
+      background-color: transparent;
 
-    &:hover {
-      text-decoration: none;
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
 }
@@ -50,11 +49,21 @@ header {
   button {
     color: $white;
     outline: none;
-    text-decoration: underline;
+    // text-decoration: underline;
     background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0.8rem 1.8rem;
+    border-radius: $border-radius-small;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 
     &:hover {
-      text-decoration: none;
+      background-color: rgba(darken($grey, 40%), 0.8);
+      backdrop-filter: blur(3px);
+      transform: translateY(-0.2rem);
     }
   }
 }

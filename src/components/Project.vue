@@ -17,9 +17,8 @@
           target="_blank"
         >
           <svg
+            class="project-svg"
             xmlns="http://www.w3.org/2000/svg"
-            width="84"
-            height="84"
             viewBox="0 0 24 24"
           >
             <path
@@ -39,7 +38,7 @@
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="w-6 h-6"
+            class="w-6 h-6 project-svg"
           >
             <path
               stroke-linecap="round"
@@ -78,7 +77,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@use "../assets/styles/abstracts" as *;
+@use "@/assets/styles/abstracts" as *;
 
 @keyframes reflect {
   0% {
@@ -205,8 +204,8 @@ export default {
     transition: all 0.3s;
 
     svg {
-      width: 3.6rem;
-      height: 3.6rem;
+      width: 2.8rem;
+      height: 2.8rem;
     }
   }
 }
