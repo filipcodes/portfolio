@@ -95,13 +95,13 @@ export default {
           "service_5c5rd2h",
           "template_ucc2bip",
           this.$refs.form,
-          "0bmkwpZ_HEx1IQsAMsZ9W"
+          "FHX5JHLwJKqHdyPTP"
         );
-
-        this.deleteInputs();
 
         // some kind of success message
         dropDown.open("Message sent successfully!");
+        this.deleteInputs();
+        this.isBtnLoading = false;
 
         // emit closing the popup
         setTimeout(() => {
@@ -109,6 +109,7 @@ export default {
         }, 4100);
       } catch (error) {
         this.isBtnLoading = false;
+        console.log(error);
         dropDown.open("An error has occured while trying to send the message!");
       }
     },
