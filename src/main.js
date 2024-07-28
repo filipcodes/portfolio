@@ -3,7 +3,11 @@ import { createI18n } from "vue-i18n";
 
 import App from "./App.vue";
 
-export const i18n = createI18n({
+const app = createApp(App);
+
+app.config.performance = true;
+
+const i18n = createI18n({
   locale: "en",
   fallbackLocale: "en",
   messages: {
@@ -22,11 +26,31 @@ export const i18n = createI18n({
           cv: "Download my CV",
         },
       },
+      footer:
+        "If interested in hiring me, or just want to chat, don't be afraid to get in touch. ",
+    },
+    //! SLOVAK
+    sk: {
+      navigation: {
+        contactMeButton: "Kontakt",
+      },
 
-      //! SLOVAK
-      sk: {},
+      intro: {
+        description:
+          "Volám sa Filip a som Front-end vývojár žijúci na Slovensku. Venujem sa tvorbe interaktívnych, user-friendly aplikácií a digitálnych rozhraní.",
+        socialLinkDescriptions: {
+          github: "Pozrite si môj GitHub",
+          linkedin: "Pozrite si môj LinkedIn",
+          cv: 'Pozrite si moje "CVčko"',
+        },
+      },
+      footer:
+        "Ak máte záujem o spoluprácu, alebo len chcete pokecať, neváhajte ma kontaktovať.",
     },
   },
 });
 
-createApp(App).mount("#app");
+export default i18n;
+app.use(i18n);
+
+app.mount("#app");
