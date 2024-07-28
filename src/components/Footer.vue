@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="getintouch">
-      <p>
+      <p class="">
         If interested in hiring me, or just want to chat, don't be afraid to get
         in touch.
       </p>
