@@ -1,16 +1,29 @@
+<script setup>
+// import TheSwitchLanguageButton from "@/components/TheSwitchLanguageButton.vue";
+</script>
 <template>
   <header>
     <a href="#">
       <img src="@/assets/media/Logo.png" alt="Filip Sipos Logo" />
     </a>
     <div class="ctas">
-      <button @click="$emit('openContact')">Get in touch</button>
+      <AppButtonLink class="px-6" type="primary" @click="$emit('openContact')">
+        {{ $t("navigation.contactMeButton") }}
+      </AppButtonLink>
+      <TheSwitchLanguageButton></TheSwitchLanguageButton>
     </div>
   </header>
 </template>
 <script>
+import AppButtonLink from "@/components/AppButtonLink.vue";
+import TheSwitchLanguageButton from "@/components/TheSwitchLanguageButton.vue";
+
 export default {
   name: "Navigation",
+  components: {
+    TheSwitchLanguageButton,
+    AppButtonLink,
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -55,14 +68,13 @@ header {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    padding: 0.8rem 1.8rem;
+    // padding: 0.8rem 1.8rem;
     border-radius: $border-radius-small;
     font-weight: 600;
     letter-spacing: 0.5px;
 
     &:hover {
-      background-color: rgba(darken($grey, 40%), 0.8);
-      backdrop-filter: blur(3px);
+      // background-color: rgba(darken($grey, 40%), 0.8);
       transform: translateY(-0.2rem);
     }
   }

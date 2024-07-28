@@ -1,9 +1,8 @@
 <template>
   <footer>
     <div class="getintouch">
-      <p>
-        If interested in hiring me, or just want to chat, don't be afraid to get
-        in touch.
+      <p class="">
+        {{ $t("footer") }}
       </p>
     </div>
   </footer>

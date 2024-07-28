@@ -1,6 +1,6 @@
 <template>
   <button class="contact hidden" @click="$emit('openContact')" href="#">
-    Get in touch
+    {{ $t("navigation.contactMeButton") }}
   </button>
 </template>
 <script>

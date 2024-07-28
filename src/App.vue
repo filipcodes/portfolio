@@ -57,6 +57,7 @@ const cursor = new MouseFollower({
 </template>
 <script>
 export default {
+  name: "App",
   data() {
     return {
       overlay: 0,
