@@ -44,6 +44,7 @@
         </a>
         <a
           title="Download my CV!"
+          target="_blank"
           href="https://drive.google.com/file/d/1Y-ocbYYtVhBng5nn9PeNKBdm1SJwXffo/view?usp=drive_link"
           >CV</a
         >
