@@ -32,7 +32,7 @@ export default {
       type: String,
       default: "primary",
       validator: (value) =>
-        ["primary", "secondary", "tertiary"].includes(value),
+        ["primary", "bottomMenu", "tertiary"].includes(value),
     },
   },
   computed: {
@@ -40,12 +40,8 @@ export default {
       switch (this.type) {
         case "primary":
           return "text-zinc-100 fill-zinc-100 bg-transparent hover:backdrop-blur-sm hover:bg-zinc-700/50 hover:-translate-y-1";
-        case "secondary":
-          return "bg-gray-500 text-black";
-        case "tertiary":
-          return "bg-green-500 text-white";
-        default:
-          return "";
+        case "bottomMenu":
+          return "text-white bg-[#09090b] z-10 tracking-wide transition border-[1.5px] border-white duration-300 hover:text-[#09090b] hover:border-[#ff4c29] hover:bg-[#ff4c29] active:bg-[#e64425]";
       }
     },
 

@@ -6,7 +6,6 @@ import App from "./App.vue";
 const app = createApp(App);
 
 app.config.performance = true;
-
 const i18n = createI18n({
   locale: "en",
   fallbackLocale: "en",

@@ -4,10 +4,10 @@ import Navigation from "@/components/Navigation.vue";
 import IntroSection from "@/components/Intro.vue";
 import Grid from "@/components/Grid.vue";
 import Footer from "@/components/Footer.vue";
+import BottomMenu from "@/components/BottomMenu.vue";
 import ContactButton from "@/components/ContactButton.vue";
 import GetInTouch from "@/components/GetInTouch.vue";
 import AppDropdown from "@/components/AppDropdown.vue";
-
 // Mouse follower
 import MouseFollower from "mouse-follower";
 import gsap from "gsap";
@@ -49,7 +49,9 @@ const cursor = new MouseFollower({
       <IntroSection></IntroSection>
       <!-- <MouseFollower></MouseFollower> -->
       <Grid></Grid>
-      <ContactButton @openContact="overlay++"></ContactButton>
+      <BottomMenu @openContact="overlay++"></BottomMenu>
+
+      <!-- <ContactButton ></ContactButton> -->
     </main>
 
     <Footer></Footer>
@@ -71,6 +73,7 @@ export default {
     ContactButton,
     GetInTouch,
     AppDropdown,
+    BottomMenu,
   },
 };
 </script>
@@ -115,10 +118,6 @@ body {
   ::selection {
     background-color: $orange;
   }
-}
-
-button {
-  border: none;
 }
 
 .containerApp {
