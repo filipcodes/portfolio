@@ -1,5 +1,10 @@
 <template>
-  <AppButtonLink href="#" type="bottomMenu" class="px-6 h-full">
+  <AppButtonLink
+    href="#"
+    @click="$emit('contact-button-clicked')"
+    type="bottomMenu"
+    class="px-6 h-full"
+  >
     {{ $t("navigation.contactMeButton") }}
   </AppButtonLink>
 </template>

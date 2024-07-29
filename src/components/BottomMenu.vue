@@ -4,7 +4,9 @@
       v-if="shown"
       class="fixed flex h-20 items-center gap-6 left-1/2 bottom-24 -translate-x-1/2"
     >
-      <ContactButton></ContactButton>
+      <ContactButton
+        @contact-button-clicked="$emit('openContact')"
+      ></ContactButton>
       <AppButtonLink
         tag="a"
         title="Download my CV!"
